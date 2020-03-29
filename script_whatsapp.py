@@ -23,8 +23,9 @@ def sendMessage(valores, text, option):
             element.until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[1]/div/div/div[4]/div/footer/div[1]/div[2]/div/div[2]")))
         except NoSuchElementException as e:
             pass
+            #Exceção não tratada: Se o número não existir
         finally:
-            send = browser.find_element_by_xpath('/html/body/div[1]/div/div/div[4]/div/footer/div[1]/div[2]/div/div[2]').send_keys(Keys.ENTER)
+            send = browser.find_element_by_xpath("/html/body/div[1]/div/div/div[4]/div/footer/div[1]/div[2]/div/div[2]").send_keys(Keys.ENTER)
             if option == 1:
                 try: 
                     element = WebDriverWait(browser, 30)
@@ -32,14 +33,14 @@ def sendMessage(valores, text, option):
                 except NoSuchElementException:
                     pass
                 finally:
-                    send = browser.find_element_by_xpath('/html/body/div[1]/div/div/div[4]/div/footer/div[1]/div[2]/div/div[2]').send_keys(Keys.CONTROL, 'v')
+                    send = browser.find_element_by_xpath("/html/body/div[1]/div/div/div[4]/div/footer/div[1]/div[2]/div/div[2]").send_keys(Keys.CONTROL, 'v')
                     try:
                         element = WebDriverWait(browser, 30)
                         element.until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[1]/div/div/div[2]/div[2]/span/div/span/div/div/div[2]/span/div/div")))
                     except NoSuchElementException:
                         pass
                     finally:
-                        send = browser.find_element_by_xpath('/html/body/div[1]/div/div/div[2]/div[2]/span/div/span/div/div/div[2]/span/div/div').click()
+                        send = browser.find_element_by_xpath("/html/body/div[1]/div/div/div[2]/div[2]/span/div/span/div/div/div[2]/span/div/div").click()
             time.sleep(3)
             i += 1
             print("({}) Enviado para {}" .format(i, num))
@@ -52,9 +53,9 @@ except:
     print("Arquivo 'phone' nao encontrado")
     sys.exit()
 
-valores = []
+numeros = []
 for linha in phones:
-    valores.append(linha.replace('\n', ''))
+    numeros.append(linha.replace('\n', ''))
 
 text = getMessage()
 option = int(input("\n1 - Com imagem\n2 - Sem imagem\n\nDigite a opção:"))
@@ -63,4 +64,4 @@ browser = webdriver.Firefox(executable_path=r'/home/bdos/geckodriver')
 browser.get("https://web.whatsapp.com/")
 time.sleep(8)
 
-sendMessage(valores, text, option)
+sendMessage(numeros, text, option)
