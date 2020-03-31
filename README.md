@@ -1,2 +1,2 @@
 # script-whatsapp
-Script em python para automatizar envio de mensagens no whatsapp web.
+Script to automate the sending of messages on whatsapp web.
