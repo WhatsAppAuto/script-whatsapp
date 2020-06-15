@@ -1,0 +1,15 @@
+{
+  "name": "whatsapp-desktop",
+  "version": "1.0.0",
+  "description": "Whatsapp for Desktop with Electron",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bruno Silva",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^9.0.4"
+  }
+}
